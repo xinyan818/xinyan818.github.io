@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>胡思乱</title>
-    <link>https://xinyan818.github.io/</link>
-    <description>Recent content on 胡思乱</description>
+    <title>2022/09 on 胡思乱</title>
+    <link>https://xinyan818.github.io/archives/2022/09/</link>
+    <description>Recent content in 2022/09 on 胡思乱</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 20 Sep 2022 12:18:38 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://xinyan818.github.io/archives/2022/09/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Hugo建立博客</title>
       <link>https://xinyan818.github.io/post/blog_with_hugo/</link>
@@ -32,33 +31,6 @@ hugo server --buildDrafts --watch &amp;ndash;buildDrafts或者-D，可以查看�
 添加内容
 hugo new posts/test.md 打开文件顶部是以下内容
 --- title: &amp;#34;test&amp;#34; date: 2022-09-20T12:18:38+08:00 draft: true --- 注意发布的时候要把draft设为false，即标记为不是草稿</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://xinyan818.github.io/contact/</link>
-      <pubDate>Tue, 20 Sep 2022 11:28:20 +0800</pubDate>
-      
-      <guid>https://xinyan818.github.io/contact/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://xinyan818.github.io/about/</link>
-      <pubDate>Tue, 20 Sep 2022 11:20:29 +0800</pubDate>
-      
-      <guid>https://xinyan818.github.io/about/</guid>
-      <description>一个普通人</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://xinyan818.github.io/archives/</link>
-      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinyan818.github.io/archives/</guid>
-      <description></description>
     </item>
     
   </channel>
