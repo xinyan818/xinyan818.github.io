@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<title>胡思乱 | 使用Hugo建立博客</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="胡思乱 | 使用Hugo建立博客" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Hugo是一个用Go语言编写的静态网站生成器，想了解Hugo可以前往官网。
+这次使用Hugo来写博客，并发布到github pages，之前就用Jekyll搞过一次（没写起来）。
+为什么要用Hugo?
+放在今天已经不算新鲜，但对我来说，主要就是图一新鲜（我没整过），其实Jekyll用起来也很简单，网上的教程几乎都是手把手教学。有个趁手的工具持续输出内容才是关键。
+安装Hugo 官网有介绍，我这次选择源码安装(MacOS)
+mkdir $HOME/src cd $HOME/src git clone https://github.com/gohugoio/hugo.git cd hugo go install go build -o hugo main.go 执行以上命令后在$HOME/src中会有一个hugo的可执行文件，添加到环境变量，(我的shell是zsh)在 ~/.zshrc中添加以下内容后执行source ~/.zshrc
+export HUGO_HOME=&#34;$HOME/src/hugo&#34; export PATH=&#34;$HUGO_HOME:$PATH&#34; 在命令行中输入hugo version验证是否安装成功
+使用 创建项目
+hugo new site my-site-name 创建后的hugo项目是没有主题的，但是需要主题才能使用
+到这个网站查看主题，选择一个中意的进行下载，我这里选择了一个简单的主题Blonde
+cd my-site-name git init git submodule add https://github.com/opera7133/Blonde.git themes/Blonde 按照主题页面的指引安装，配置文件主题已经提供了示例，直接copy到项目根目录，不同的主题安装略有差异，具体请查看页面上的介绍
+启动Hugo服务
+hugo server --buildDrafts --watch &ndash;buildDrafts或者-D，可以查看草稿内容
+-–watch或者-w 选项打开的话，将会监控到内容的改动从而自动去刷新浏览器
+服务起来后，进入http://localhost:1313查看
+页面是空的，因为还没有内容
+添加内容
+hugo new posts/test.md 打开文件顶部是以下内容
+--- title: &#34;test&#34; date: 2022-09-20T12:18:38&#43;08:00 draft: true --- 注意发布的时候要把draft设为false，即标记为不是草稿">
+<meta property="og:site_name" content="胡思乱">
+<meta property="og:description" content="Hugo是一个用Go语言编写的静态网站生成器，想了解Hugo可以前往官网。
+这次使用Hugo来写博客，并发布到github pages，之前就用Jekyll搞过一次（没写起来）。
+为什么要用Hugo?
+放在今天已经不算新鲜，但对我来说，主要就是图一新鲜（我没整过），其实Jekyll用起来也很简单，网上的教程几乎都是手把手教学。有个趁手的工具持续输出内容才是关键。
+安装Hugo 官网有介绍，我这次选择源码安装(MacOS)
+mkdir $HOME/src cd $HOME/src git clone https://github.com/gohugoio/hugo.git cd hugo go install go build -o hugo main.go 执行以上命令后在$HOME/src中会有一个hugo的可执行文件，添加到环境变量，(我的shell是zsh)在 ~/.zshrc中添加以下内容后执行source ~/.zshrc
+export HUGO_HOME=&#34;$HOME/src/hugo&#34; export PATH=&#34;$HUGO_HOME:$PATH&#34; 在命令行中输入hugo version验证是否安装成功
+使用 创建项目
+hugo new site my-site-name 创建后的hugo项目是没有主题的，但是需要主题才能使用
+到这个网站查看主题，选择一个中意的进行下载，我这里选择了一个简单的主题Blonde
+cd my-site-name git init git submodule add https://github.com/opera7133/Blonde.git themes/Blonde 按照主题页面的指引安装，配置文件主题已经提供了示例，直接copy到项目根目录，不同的主题安装略有差异，具体请查看页面上的介绍
+启动Hugo服务
+hugo server --buildDrafts --watch &ndash;buildDrafts或者-D，可以查看草稿内容
+-–watch或者-w 选项打开的话，将会监控到内容的改动从而自动去刷新浏览器
+服务起来后，进入http://localhost:1313查看
+页面是空的，因为还没有内容
+添加内容
+hugo new posts/test.md 打开文件顶部是以下内容
+--- title: &#34;test&#34; date: 2022-09-20T12:18:38&#43;08:00 draft: true --- 注意发布的时候要把draft设为false，即标记为不是草稿">
+<meta property="og:url" content="https://xinyan818.github.io/post/blog_with_hugo/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://xinyan818.github.io/post/blog_with_hugo/">
+
+<meta name="twitter:description" content="Hugo是一个用Go语言编写的静态网站生成器，想了解Hugo可以前往官网。
+这次使用Hugo来写博客，并发布到github pages，之前就用Jekyll搞过一次（没写起来）。
+为什么要用Hugo?
+放在今天已经不算新鲜，但对我来说，主要就是图一新鲜（我没整过），其实Jekyll用起来也很简单，网上的教程几乎都是手把手教学。有个趁手的工具持续输出内容才是关键。
+安装Hugo 官网有介绍，我这次选择源码安装(MacOS)
+mkdir $HOME/src cd $HOME/src git clone https://github.com/gohugoio/hugo.git cd hugo go install go build -o hugo main.go 执行以上命令后在$HOME/src中会有一个hugo的可执行文件，添加到环境变量，(我的shell是zsh)在 ~/.zshrc中添加以下内容后执行source ~/.zshrc
+export HUGO_HOME=&#34;$HOME/src/hugo&#34; export PATH=&#34;$HUGO_HOME:$PATH&#34; 在命令行中输入hugo version验证是否安装成功
+使用 创建项目
+hugo new site my-site-name 创建后的hugo项目是没有主题的，但是需要主题才能使用
+到这个网站查看主题，选择一个中意的进行下载，我这里选择了一个简单的主题Blonde
+cd my-site-name git init git submodule add https://github.com/opera7133/Blonde.git themes/Blonde 按照主题页面的指引安装，配置文件主题已经提供了示例，直接copy到项目根目录，不同的主题安装略有差异，具体请查看页面上的介绍
+启动Hugo服务
+hugo server --buildDrafts --watch &ndash;buildDrafts或者-D，可以查看草稿内容
+-–watch或者-w 选项打开的话，将会监控到内容的改动从而自动去刷新浏览器
+服务起来后，进入http://localhost:1313查看
+页面是空的，因为还没有内容
+添加内容
+hugo new posts/test.md 打开文件顶部是以下内容
+--- title: &#34;test&#34; date: 2022-09-20T12:18:38&#43;08:00 draft: true --- 注意发布的时候要把draft设为false，即标记为不是草稿">
+<meta property="article:published_time" content="2022-09-20T12:18:38&#43;08:00">
+<meta property="article:updated_time" content="2022-09-20T12:18:38&#43;08:00">
+
+
+
+
+
+<meta property="og:image" content="https://xinyan818.github.io/">
+<meta property="og:image:url" content="https://xinyan818.github.io/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://xinyan818.github.io/"><span class="font-semibold text-2xl tracking-tight">胡思乱</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                    <a href="/about/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        About
+                    </a>
+                    
+                    <a href="/contact/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Contact
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <h1 class="mb-2 text-4xl font-bold">使用Hugo建立博客</h1>
+        <aside id="meta">
+          <div>
+            <section>
+              <h4 id="date"><span class="icon-access_time mr-2"></span>2022/09/20
+              </h4>
+            </section>
+            
+          </div>
+        </aside>
+        
+        
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5"><p>Hugo是一个用Go语言编写的静态网站生成器，想了解<code>Hugo</code>可以<a href="https://gohugo.io/">前往官网</a>。</p>
+<p>这次使用Hugo来写博客，并发布到github pages，之前就用<code>Jekyll</code>搞过一次（没写起来）。</p>
+<p>为什么要用Hugo?</p>
+<p>放在今天已经不算新鲜，但对我来说，主要就是图一新鲜（我没整过），其实<code>Jekyll</code>用起来也很简单，网上的教程几乎都是手把手教学。有个趁手的工具持续输出内容才是关键。</p>
+<h2 id="安装hugo">安装Hugo</h2>
+<p><a href="https://gohugo.io/getting-started/installing/">官网</a>有介绍，我这次选择源码安装(MacOS)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir $HOME/src
+</span></span><span style="display:flex;"><span>cd $HOME/src
+</span></span><span style="display:flex;"><span>git clone https://github.com/gohugoio/hugo.git
+</span></span><span style="display:flex;"><span>cd hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>go install
+</span></span><span style="display:flex;"><span>go build -o hugo main.go
+</span></span></code></pre></div><p>执行以上命令后在<code>$HOME/src</code>中会有一个<code>hugo</code>的可执行文件，添加到环境变量，(我的shell是zsh)在 <code>~/.zshrc</code>中添加以下内容后执行<code>source ~/.zshrc</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>export HUGO_HOME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/src/hugo&#34;</span>
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HUGO_HOME<span style="color:#e6db74">:</span>$PATH<span style="color:#e6db74">&#34;</span>  
+</span></span></code></pre></div><p>在命令行中输入hugo version验证是否安装成功</p>
+<h2 id="使用">使用</h2>
+<p><strong>创建项目</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo new site my-site-name
+</span></span></code></pre></div><p>创建后的hugo项目是没有主题的，但是<strong>需要主题</strong>才能使用</p>
+<p>到这个<a href="https://themes.gohugo.io/">网站</a>查看主题，选择一个中意的进行下载，我这里选择了一个简单的<a href="https://themes.gohugo.io/themes/blonde/">主题Blonde</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd my-site-name
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/opera7133/Blonde.git themes/Blonde
+</span></span></code></pre></div><p>按照主题页面的指引安装，配置文件主题已经提供了示例，直接copy到项目根目录，不同的主题安装略有差异，具体请查看页面上的介绍</p>
+<p><strong>启动Hugo服务</strong></p>
+<pre tabindex="0"><code>hugo server --buildDrafts --watch
+</code></pre><p>&ndash;buildDrafts或者-D，可以查看草稿内容</p>
+<p>-–watch或者-w 选项打开的话，将会监控到内容的改动从而自动去刷新浏览器</p>
+<p>服务起来后，进入<a href="http://localhost:1313/">http://localhost:1313</a>查看</p>
+<p>页面是空的，因为还没有内容</p>
+<p><strong>添加内容</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo new posts/test.md
+</span></span></code></pre></div><p>打开文件顶部是以下内容</p>
+<pre tabindex="0"><code>---
+title: &#34;test&#34;
+date: 2022-09-20T12:18:38+08:00
+draft: true
+---
+</code></pre><p>注意发布的时候要把draft设为false，即标记为不是草稿</p>
+<h2 id="发布到github-pages上">发布到Github Pages上</h2>
+<p>我创建了两个仓库，一个放hugo项目，用来写博客，可能会有不完整的草稿，就设置为了私有。另一个用来部署github pages</p>
+<p>在hugo项目中打包，将生成的pullic项目推送到github pages项目，操作如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:xinyan818/xinyan818.github.io.git
+</span></span><span style="display:flex;"><span>git add -A
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#39;public&#39;</span>
+</span></span><span style="display:flex;"><span>git push --set-upstream origin master
+</span></span></code></pre></div></div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="grid grid-cols-2">
+          <div class="col-span-1">
+            
+          </div>
+          
+        </div>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+            
+            <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://xinyan818.github.io/" />
+    </form>
+</div>
+        
+            
+            <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 px-3 dark:text-gray-300 font-bold">Archives</p>
+    
+    
+    
+</div>
+        
+            
+            
+        
+            
+            
+
+        
+            
+            
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/post/blog_with_hugo/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white">使用Hugo建立博客</div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>2022/09/20</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+        
+    
+</div>
+    
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2022 <a href="https://xinyan818.github.io/" class="duration-200 hover:opacity-50">胡思乱</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>
