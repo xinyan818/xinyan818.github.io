@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<title>胡思乱 | 圆周运动动画</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="胡思乱 | 圆周运动动画" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="数学定义 众所周知，三点确定一个圆，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：
+$$x^2&#43;y^2&#43;Dx&#43;Ey&#43;F=r^2$$
+本质上我们也得到了圆心和半径（可能并不那么容易）
+已知圆心 (x0, y0) 和半径 r，可以得到圆的标准方程：
+$${(x-x0)}^2&#43;{(y-y0)}^2=r^2$$
+制作圆的动画的关键就需要得到圆心和半径, 可以想象下圆规画圆
+圆周动画 做动画和数学中解方程不完全相同，动画还有一个进度的概念，进度大部分时候可以理解为时间，不同时间中的状态组成了动画
+使物体做圆周运动，需要得到物体在圆周上不同时间的坐标
+假设物体的起始坐标为 (r, 0)，初始角度为 0，在单位时间内移动的角度为 θ
+那么在下一个单位时间的坐标为 (r*cosθ, r*sinθ)，随着时间角度不断增加，就可以得到一个圆的动画
+这里演示用，我们使 θ = π/6（弧度制），即30度
+不断点击下方canvas画布可以得到这个过程
+弧度制和角度制 角度是客观存在的, 具体数值则是一个度量标准。数学中三角函数使用的是弧度制，编程语言中也使用弧度制。
+角度制是把周角映射到360°，弧度制是把周角映射到2π，可以得到 $$2πrad=360° $$ $$πrad=180° $$ $$rad=\frac{180°}{π}$$
+例：js将角度转为弧度
+const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.49999999999999994 ">
+<meta property="og:site_name" content="胡思乱">
+<meta property="og:description" content="数学定义 众所周知，三点确定一个圆，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：
+$$x^2&#43;y^2&#43;Dx&#43;Ey&#43;F=r^2$$
+本质上我们也得到了圆心和半径（可能并不那么容易）
+已知圆心 (x0, y0) 和半径 r，可以得到圆的标准方程：
+$${(x-x0)}^2&#43;{(y-y0)}^2=r^2$$
+制作圆的动画的关键就需要得到圆心和半径, 可以想象下圆规画圆
+圆周动画 做动画和数学中解方程不完全相同，动画还有一个进度的概念，进度大部分时候可以理解为时间，不同时间中的状态组成了动画
+使物体做圆周运动，需要得到物体在圆周上不同时间的坐标
+假设物体的起始坐标为 (r, 0)，初始角度为 0，在单位时间内移动的角度为 θ
+那么在下一个单位时间的坐标为 (r*cosθ, r*sinθ)，随着时间角度不断增加，就可以得到一个圆的动画
+这里演示用，我们使 θ = π/6（弧度制），即30度
+不断点击下方canvas画布可以得到这个过程
+弧度制和角度制 角度是客观存在的, 具体数值则是一个度量标准。数学中三角函数使用的是弧度制，编程语言中也使用弧度制。
+角度制是把周角映射到360°，弧度制是把周角映射到2π，可以得到 $$2πrad=360° $$ $$πrad=180° $$ $$rad=\frac{180°}{π}$$
+例：js将角度转为弧度
+const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.49999999999999994 ">
+<meta property="og:url" content="https://xinyan818.github.io/post/circle_animation/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://xinyan818.github.io/post/circle_animation/">
+
+<meta name="twitter:description" content="数学定义 众所周知，三点确定一个圆，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：
+$$x^2&#43;y^2&#43;Dx&#43;Ey&#43;F=r^2$$
+本质上我们也得到了圆心和半径（可能并不那么容易）
+已知圆心 (x0, y0) 和半径 r，可以得到圆的标准方程：
+$${(x-x0)}^2&#43;{(y-y0)}^2=r^2$$
+制作圆的动画的关键就需要得到圆心和半径, 可以想象下圆规画圆
+圆周动画 做动画和数学中解方程不完全相同，动画还有一个进度的概念，进度大部分时候可以理解为时间，不同时间中的状态组成了动画
+使物体做圆周运动，需要得到物体在圆周上不同时间的坐标
+假设物体的起始坐标为 (r, 0)，初始角度为 0，在单位时间内移动的角度为 θ
+那么在下一个单位时间的坐标为 (r*cosθ, r*sinθ)，随着时间角度不断增加，就可以得到一个圆的动画
+这里演示用，我们使 θ = π/6（弧度制），即30度
+不断点击下方canvas画布可以得到这个过程
+弧度制和角度制 角度是客观存在的, 具体数值则是一个度量标准。数学中三角函数使用的是弧度制，编程语言中也使用弧度制。
+角度制是把周角映射到360°，弧度制是把周角映射到2π，可以得到 $$2πrad=360° $$ $$πrad=180° $$ $$rad=\frac{180°}{π}$$
+例：js将角度转为弧度
+const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.49999999999999994 ">
+<meta property="article:published_time" content="2022-10-23T20:37:59&#43;08:00">
+<meta property="article:updated_time" content="2022-10-23T20:37:59&#43;08:00">
+
+
+
+
+
+<meta property="og:image" content="https://xinyan818.github.io/">
+<meta property="og:image:url" content="https://xinyan818.github.io/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://xinyan818.github.io/"><span class="font-semibold text-2xl tracking-tight">胡思乱</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                    <a href="/about/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        About
+                    </a>
+                    
+                    <a href="/contact/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Contact
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <h1 class="mb-2 text-4xl font-bold">圆周运动动画</h1>
+        <aside id="meta">
+          <div>
+            <section>
+              <h4 id="date"><span class="icon-access_time mr-2"></span>2022/10/23
+              </h4>
+            </section>
+            
+            <div id="tags">
+              <span class="icon-local_offer mr-1"></span>
+              
+              <a href='https://xinyan818.github.io/tags/math'>math</a> |
+              
+            </div>
+            
+          </div>
+        </aside>
+        
+        
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5"><h3 id="数学定义">数学定义</h3>
+<p>众所周知，<strong>三点确定一个圆</strong>，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：</p>
+<p>$$x^2+y^2+Dx+Ey+F=r^2$$</p>
+<p>本质上我们也得到了圆心和半径（可能并不那么容易）</p>
+<p>已知圆心 (x0, y0) 和半径 r，可以得到圆的标准方程：</p>
+<p>$${(x-x0)}^2+{(y-y0)}^2=r^2$$</p>
+<p>制作圆的动画的关键就需要得到<strong>圆心</strong>和<strong>半径</strong>, <em>可以想象下圆规画圆</em></p>
+<h3 id="圆周动画">圆周动画</h3>
+<p>做动画和数学中解方程不完全相同，动画还有一个进度的概念，进度大部分时候可以理解为时间，不同时间中的状态组成了动画</p>
+<p>使物体做圆周运动，需要得到物体在圆周上不同时间的坐标</p>
+<hr>
+<p>假设物体的起始坐标为 <strong>(r, 0)</strong>，初始角度为 <strong>0</strong>，在单位时间内移动的角度为 <strong>θ</strong></p>
+<p>那么在下一个单位时间的坐标为 <strong>(r*cosθ, r*sinθ)</strong>，随着时间角度不断增加，就可以得到一个圆的动画</p>
+<p>这里演示用，我们使 <strong>θ = π/6</strong>（弧度制），即30度</p>
+<p><strong>不断点击下方canvas画布可以得到这个过程</strong></p>
+<div class="canvas-container" style="display: flex; flex-direction: column; align-items: center;">
+  <canvas id="canvas" width="500" height="500" style="background: #333;" @click="eventPlay()"></canvas>
+  <script>
+    var canvas,
+      clickIndex = 0,
+      rotateAngle = 0,
+      rotateAnglePer = -Math.PI / 6,
+      centerPos = { x: 250, y: 250 },
+      startPos = { x: 450, y: 250 }
+
+    const _fontColor = "rgba(250,250,250,1)"
+    
+    function getAnglePos() {
+      return {
+        x: centerPos.x + 200 * Math.cos(rotateAngle),
+        y: centerPos.y + 200 * Math.sin(rotateAngle),
+      }
+    }
+    
+    const eventList = [
+      function (ctx) {
+        ctx.beginPath()
+        ctx.arc(250, 250, 200, 0, 2 * Math.PI)
+        ctx.strokeStyle = "orange"
+        ctx.lineWidth = 2
+        ctx.stroke()
+      },
+      function (ctx) {
+        drawDot(450, 250, 10, "red")
+      },
+      function (ctx) {
+        rotateAngle += rotateAnglePer
+        let pos = getAnglePos()
+        drawDot(pos.x, pos.y, 10, "blue")
+      },
+      function (ctx) {
+        let pos = getAnglePos()
+        ctx.beginPath()
+        ctx.moveTo(pos.x, pos.y)
+        ctx.lineTo(centerPos.x, centerPos.y)
+        ctx.moveTo(startPos.x, startPos.y)
+        ctx.lineTo(centerPos.x, centerPos.y)
+        ctx.strokeStyle = "yellow"
+        ctx.lineWidth = 3
+        ctx.stroke()
+    
+        drawText("θ", 280, 240)
+      },
+      function (ctx) {
+        let pos = getAnglePos()
+        ctx.beginPath()
+        ctx.moveTo(pos.x, pos.y)
+        ctx.lineTo(pos.x, centerPos.y)
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = 3
+        ctx.stroke()
+    
+        drawText("θ", 280, 240)
+      },
+      function (ctx) {
+        let pos = getAnglePos()
+        drawText("(rcosθ, rsinθ)", pos.x - 10, pos.y - 20)
+      },
+    ]
+    
+    function eventPlay() {
+      if (clickIndex == eventList.length) {
+        init()
+        return
+      }
+    
+      let ctx = getConvasCtx()
+      let eventFn = eventList[clickIndex]
+    
+      eventFn(ctx)
+    
+      clickIndex += 1
+    }
+    
+    function getConvasCtx() {
+        const ctx = canvas.getContext("2d")
+        return ctx
+    }
+    function drawCartesian() {
+        canvas.width = 500
+        canvas.height = 500
+    
+        var ctx = getConvasCtx()
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        for (var k = 0; k < 21; k++) {
+            ctx.strokeStyle = "#555"
+            ctx.lineWidth = 1
+            if (k === 10) {
+            ctx.strokeStyle = "#888"
+            }
+            //draw columns
+            ctx.beginPath()
+            ctx.moveTo(k * 25, 0)
+            ctx.lineTo(k * 25, 500)
+            ctx.stroke()
+            //draw rows
+            ctx.beginPath()
+            ctx.moveTo(0, k * 25)
+            ctx.lineTo(500, k * 25)
+            ctx.stroke()
+        }
+        ctx.font = "13px Arial"
+        ctx.textAlign = "right"
+        drawText("x", 490, 270, _fontColor)
+    
+        ctx.textAlign = "left"
+        drawText("y", 260, 20, _fontColor)
+    }
+    
+    function drawDot(x, y, dotRadius, dotColor) {
+        const ctx = getConvasCtx()
+    
+        ctx.beginPath()
+        ctx.arc(x, y, dotRadius, 0, 2 * Math.PI, false)
+        ctx.fillStyle = dotColor
+        ctx.fill()
+    }
+    
+    function drawText(content, x, y, fontColor) {
+        const ctx = getConvasCtx()
+    
+        let fc = _fontColor
+        if (fontColor) fc = fontColor
+        ctx.fillStyle = fc
+    
+        ctx.fillText(content, x, y)
+    }
+    
+    function init() {
+        canvas = document.getElementById('canvas')
+        drawCartesian()
+        clickIndex = 0
+        rotateAngle = 0
+    }
+    
+    window.onload = function() {
+    
+      for (let index = 0; index < 10; index++) {
+        eventList.push(function (ctx) {
+          rotateAngle += rotateAnglePer
+          let pos = getAnglePos()
+          drawDot(pos.x, pos.y, 10, "blue")
+        })
+      }
+    
+      init()
+    
+      canvas.addEventListener("click", function(){
+        eventPlay()
+      })
+    }
+  </script>
+</div>
+<h3 id="弧度制和角度制">弧度制和角度制</h3>
+<p>角度是客观存在的, 具体数值则是一个度量标准。数学中三角函数使用的是弧度制，编程语言中也使用弧度制。</p>
+<p>角度制是把周角映射到360°，弧度制是把周角映射到2π，可以得到
+$$2πrad=360° $$
+$$πrad=180° $$
+$$rad=\frac{180°}{π}$$</p>
+<p>例：js将角度转为弧度</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">angle</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rad</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">180</span> 
+</span></span><span style="display:flex;"><span>Math.<span style="color:#a6e22e">sin</span>(<span style="color:#a6e22e">rad</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 0.49999999999999994
+</span></span></span></code></pre></div></div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="grid grid-cols-2">
+          <div class="col-span-1">
+            
+            <a class="previous lg:text-2xl" href="https://xinyan818.github.io/post/blog_with_hugo/">
+              <div
+                class="transition-colors duration-300 border border-gray-600 hover:border-black h-auto m-3 text-center py-3 lg:py-1">
+                <span class="icon-keyboard_arrow_left"></span> 使用Hugo建立博客
+              </div>
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+            
+            <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://xinyan818.github.io/" />
+    </form>
+</div>
+        
+            
+            <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 px-3 dark:text-gray-300 font-bold">Archives</p>
+    
+    
+    <a class="text-center block duration-100 py-2 px-4 mx-4 hover:bg-gray-100 text-gray-800 dark:text-gray-200 dark:hover:bg-warmgray-800"
+        href="https://xinyan818.github.io//archives/2022/09">2022/09 (1)</a>
+    
+    <a class="text-center block duration-100 py-2 px-4 mx-4 hover:bg-gray-100 text-gray-800 dark:text-gray-200 dark:hover:bg-warmgray-800"
+        href="https://xinyan818.github.io//archives/2022/10">2022/10 (1)</a>
+    
+    
+</div>
+        
+            
+            
+        
+            
+            
+<div class="bg-white panel mb-3 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300 font-bold">Tags</p>
+    <div class="panel-block p-2">
+        <a href='/tags/hugo'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                hugo
+            </span></a>
+        <a href='/tags/math'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                math
+            </span></a>
+    </div>
+</div>
+
+
+        
+            
+            
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/post/circle_animation/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white">圆周运动动画</div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>2022/10/23</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="/post/blog_with_hugo/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white">使用Hugo建立博客</div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>2022/09/20</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+        
+    
+</div>
+    
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2022 <a href="https://xinyan818.github.io/" class="duration-200 hover:opacity-50">胡思乱</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_SVG"></script>
+</footer></div>
+</body>
+
+</html>

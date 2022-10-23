@@ -6,7 +6,31 @@
     <description>Recent content on 胡思乱</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Sep 2022 12:18:38 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 20:37:59 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>圆周运动动画</title>
+      <link>https://xinyan818.github.io/post/circle_animation/</link>
+      <pubDate>Sun, 23 Oct 2022 20:37:59 +0800</pubDate>
+      
+      <guid>https://xinyan818.github.io/post/circle_animation/</guid>
+      <description>数学定义 众所周知，三点确定一个圆，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：
+$$x^2+y^2+Dx+Ey+F=r^2$$
+本质上我们也得到了圆心和半径（可能并不那么容易）
+已知圆心 (x0, y0) 和半径 r，可以得到圆的标准方程：
+$${(x-x0)}^2+{(y-y0)}^2=r^2$$
+制作圆的动画的关键就需要得到圆心和半径, 可以想象下圆规画圆
+圆周动画 做动画和数学中解方程不完全相同，动画还有一个进度的概念，进度大部分时候可以理解为时间，不同时间中的状态组成了动画
+使物体做圆周运动，需要得到物体在圆周上不同时间的坐标
+假设物体的起始坐标为 (r, 0)，初始角度为 0，在单位时间内移动的角度为 θ
+那么在下一个单位时间的坐标为 (r*cosθ, r*sinθ)，随着时间角度不断增加，就可以得到一个圆的动画
+这里演示用，我们使 θ = π/6（弧度制），即30度
+不断点击下方canvas画布可以得到这个过程
+弧度制和角度制 角度是客观存在的, 具体数值则是一个度量标准。数学中三角函数使用的是弧度制，编程语言中也使用弧度制。
+角度制是把周角映射到360°，弧度制是把周角映射到2π，可以得到 $$2πrad=360° $$ $$πrad=180° $$ $$rad=\frac{180°}{π}$$
+例：js将角度转为弧度
+const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.49999999999999994 </description>
+    </item>
+    
     <item>
       <title>使用Hugo建立博客</title>
       <link>https://xinyan818.github.io/post/blog_with_hugo/</link>
