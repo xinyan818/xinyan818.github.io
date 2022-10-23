@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>math on 胡思乱</title>
+    <link>https://xinyan818.github.io/tags/math/</link>
+    <description>Recent content in math on 胡思乱</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Oct 2022 20:30:00 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>与圆相关的动画</title>
+      <link>https://xinyan818.github.io/post/circle_animation/</link>
+      <pubDate>Sun, 23 Oct 2022 20:30:00 +0800</pubDate>
+      
+      <guid>https://xinyan818.github.io/post/circle_animation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
