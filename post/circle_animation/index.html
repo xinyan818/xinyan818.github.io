@@ -105,7 +105,7 @@ const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.4999999999999
             </div>
             <div class="flex md:hidden">
                 <div class="py-2">
-                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                    <button onclick="toggleDarkMode()" id="toggle-mode" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
                             class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
                     <span class="text-white">|</span>
                 </div>
@@ -136,7 +136,7 @@ const angle = 30 const rad = 30 * Math.PI / 180 Math.sin(rad) // 0.4999999999999
                 </div>
                 <div class="text-white invisible md:visible">
                     <span>|</span>
-                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                    <button onclick="toggleDarkMode()" id="toggle-mode-m" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
                             class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
                 </div>
             </div>
@@ -394,6 +394,47 @@ $$rad=\frac{180°}{π}$$</p>
           
         </div>
       </div>
+      
+<div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+  <script src="https://utteranc.es/client.js" repo="xinyan818/xinyan818.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+  <script>
+    const getThemeMsg = () => {
+      const theme = (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+        ? "photon-dark"
+        : "github-light";
+
+      const msg = {
+        type: "set-theme",
+        theme: theme,
+      };
+
+      return msg
+    }
+
+    window.onload = () => {
+      const utteranc = document.querySelector(".utterances-frame")
+      utteranc.addEventListener("load", () => {
+        const msg = getThemeMsg()
+        this.contentWindow.postMessage(message, "https://utteranc.es");
+      })
+
+    }
+
+    const toggleModeFunc = () => {
+      const msg = getThemeMsg()
+      const utteranc = document.querySelector(".utterances-frame");
+      utteranc.contentWindow.postMessage(message, "https://utteranc.es");
+    }
+
+    document.getElementById("toggle-mode").addEventListener("click", toggleModeFunc);
+    document.getElementById("toggle-mode-m").addEventListener("click", toggleModeFunc);
+
+  </script>
+</div>
+
     </div>
     
     <div class="hidden lg:block lg:col-span-1">
@@ -490,7 +531,7 @@ $$rad=\frac{180°}{π}$$</p>
         </div><footer class="bg-gray-800 text-white p-6">
   
   <div class="container max-w-screen-xl mr-auto ml-auto">
-    <p>&copy; 2022 <a href="https://xinyan818.github.io/" class="duration-200 hover:opacity-50">胡思乱</a>
+    <p>&copy; 2023 <a href="https://xinyan818.github.io/" class="duration-200 hover:opacity-50">胡思乱</a>
     </p>
     <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
         href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
