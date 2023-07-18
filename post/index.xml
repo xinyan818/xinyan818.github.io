@@ -6,7 +6,23 @@
     <description>Recent content in Posts on 胡思乱</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Oct 2022 20:37:59 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jul 2023 21:01:00 +0800</lastBuildDate><atom:link href="https://xinyan818.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跨域问题记录</title>
+      <link>https://xinyan818.github.io/post/cors_problems/</link>
+      <pubDate>Tue, 18 Jul 2023 21:01:00 +0800</pubDate>
+      
+      <guid>https://xinyan818.github.io/post/cors_problems/</guid>
+      <description>记录跨域问题以及Nginx的对应配置
+什么是跨源资源共享（CORS）？
+前端需要直接请求服务端接口出现跨域问题:
+Access to XMLHttpRequest at &amp;lsquo;https://test.xxx.com&amp;rsquo; from origin &amp;lsquo;http://localhost:8080&amp;rsquo; has been blocked by CORS policy: Response to preflight request doesn&amp;rsquo;t pass access control check: No &amp;lsquo;Access-Control-Allow-Origin&amp;rsquo; header is present on the requested resource.
+在使用Nginx做反向代理的情况，一般会进行如下配置
+location / { ... add_header Access-Control-Allow-Origin &amp;#34;https://localhost:8080&amp;#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 大多数情况可以解决问题，还有一些特殊情况，以下进行列举
+情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
+Access to XMLHttpRequest at &amp;lsquo;https://test.xxx.com/api/xxx&#39; from origin &amp;lsquo;http://localhost:8080&amp;rsquo; has been blocked by CORS policy: Response to preflight request doesn&amp;rsquo;t pass access control check: The &amp;lsquo;Access-Control-Allow-Origin&amp;rsquo; header contains multiple values &amp;lsquo;http://localhost:8080, *&amp;rsquo;, but only one is allowed.</description>
+    </item>
+    
     <item>
       <title>圆周运动动画</title>
       <link>https://xinyan818.github.io/post/circle_animation/</link>
