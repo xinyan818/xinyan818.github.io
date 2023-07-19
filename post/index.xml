@@ -13,14 +13,14 @@
       <pubDate>Tue, 18 Jul 2023 21:01:00 +0800</pubDate>
       
       <guid>https://xinyan818.github.io/post/cors_problems/</guid>
-      <description>记录跨域问题以及Nginx的对应配置
-什么是跨源资源共享（CORS）？
-前端需要直接请求服务端接口出现跨域问题:
+      <description>记录跨域问题的原因，并展示如何使用 Nginx 的配置来解决这些问题
+什么是跨源资源共享（CORS）？ 跨源资源共享（CORS）是一种浏览器安全策略，用于限制来自不同域的 Web 应用程序对当前域中资源的访问。想要深入了解 CORS，请查阅MDN Web 文档。
+跨域问题与 Nginx 配置 当前端直接请求服务端接口时，经常会遇到跨域问题，你可能会在浏览器的控制台看到如下错误：
 Access to XMLHttpRequest at &amp;lsquo;https://test.xxx.com&amp;rsquo; from origin &amp;lsquo;http://localhost:8080&amp;rsquo; has been blocked by CORS policy: Response to preflight request doesn&amp;rsquo;t pass access control check: No &amp;lsquo;Access-Control-Allow-Origin&amp;rsquo; header is present on the requested resource.
-在使用Nginx做反向代理的情况，一般会进行如下配置
-location / { ... add_header Access-Control-Allow-Origin &amp;#34;https://localhost:8080&amp;#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 大多数情况可以解决问题，还有一些特殊情况，以下进行列举
-情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
-Access to XMLHttpRequest at &amp;lsquo;https://test.xxx.com/api/xxx&#39; from origin &amp;lsquo;http://localhost:8080&amp;rsquo; has been blocked by CORS policy: Response to preflight request doesn&amp;rsquo;t pass access control check: The &amp;lsquo;Access-Control-Allow-Origin&amp;rsquo; header contains multiple values &amp;lsquo;http://localhost:8080, *&amp;rsquo;, but only one is allowed.</description>
+在使用 Nginx 作为反向代理时，我们一般可以通过以下配置解决大多数跨域问题：
+location / { ... add_header Access-Control-Allow-Origin &amp;#34;https://localhost:8080&amp;#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 然而，有一些特殊情况需要额外注意，我们将逐一列举并给出相应的优化配置。
+其他情况 情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
+Access to XMLHttpRequest at &amp;lsquo;https://test.</description>
     </item>
     
     <item>

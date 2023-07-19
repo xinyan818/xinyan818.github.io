@@ -25,23 +25,23 @@
 
 
 
-<meta name="description" content="记录跨域问题以及Nginx的对应配置
-什么是跨源资源共享（CORS）？
-前端需要直接请求服务端接口出现跨域问题:
+<meta name="description" content="记录跨域问题的原因，并展示如何使用 Nginx 的配置来解决这些问题
+什么是跨源资源共享（CORS）？ 跨源资源共享（CORS）是一种浏览器安全策略，用于限制来自不同域的 Web 应用程序对当前域中资源的访问。想要深入了解 CORS，请查阅MDN Web 文档。
+跨域问题与 Nginx 配置 当前端直接请求服务端接口时，经常会遇到跨域问题，你可能会在浏览器的控制台看到如下错误：
 Access to XMLHttpRequest at &lsquo;https://test.xxx.com&rsquo; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: No &lsquo;Access-Control-Allow-Origin&rsquo; header is present on the requested resource.
-在使用Nginx做反向代理的情况，一般会进行如下配置
-location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 大多数情况可以解决问题，还有一些特殊情况，以下进行列举
-情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
-Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: The &lsquo;Access-Control-Allow-Origin&rsquo; header contains multiple values &lsquo;http://localhost:8080, *&rsquo;, but only one is allowed.">
+在使用 Nginx 作为反向代理时，我们一般可以通过以下配置解决大多数跨域问题：
+location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 然而，有一些特殊情况需要额外注意，我们将逐一列举并给出相应的优化配置。
+其他情况 情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
+Access to XMLHttpRequest at &lsquo;https://test.">
 <meta property="og:site_name" content="胡思乱">
-<meta property="og:description" content="记录跨域问题以及Nginx的对应配置
-什么是跨源资源共享（CORS）？
-前端需要直接请求服务端接口出现跨域问题:
+<meta property="og:description" content="记录跨域问题的原因，并展示如何使用 Nginx 的配置来解决这些问题
+什么是跨源资源共享（CORS）？ 跨源资源共享（CORS）是一种浏览器安全策略，用于限制来自不同域的 Web 应用程序对当前域中资源的访问。想要深入了解 CORS，请查阅MDN Web 文档。
+跨域问题与 Nginx 配置 当前端直接请求服务端接口时，经常会遇到跨域问题，你可能会在浏览器的控制台看到如下错误：
 Access to XMLHttpRequest at &lsquo;https://test.xxx.com&rsquo; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: No &lsquo;Access-Control-Allow-Origin&rsquo; header is present on the requested resource.
-在使用Nginx做反向代理的情况，一般会进行如下配置
-location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 大多数情况可以解决问题，还有一些特殊情况，以下进行列举
-情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
-Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: The &lsquo;Access-Control-Allow-Origin&rsquo; header contains multiple values &lsquo;http://localhost:8080, *&rsquo;, but only one is allowed.">
+在使用 Nginx 作为反向代理时，我们一般可以通过以下配置解决大多数跨域问题：
+location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 然而，有一些特殊情况需要额外注意，我们将逐一列举并给出相应的优化配置。
+其他情况 情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
+Access to XMLHttpRequest at &lsquo;https://test.">
 <meta property="og:url" content="https://xinyan818.github.io/post/cors_problems/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
@@ -50,14 +50,14 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 
 <link rel="canonical" href="https://xinyan818.github.io/post/cors_problems/">
 
-<meta name="twitter:description" content="记录跨域问题以及Nginx的对应配置
-什么是跨源资源共享（CORS）？
-前端需要直接请求服务端接口出现跨域问题:
+<meta name="twitter:description" content="记录跨域问题的原因，并展示如何使用 Nginx 的配置来解决这些问题
+什么是跨源资源共享（CORS）？ 跨源资源共享（CORS）是一种浏览器安全策略，用于限制来自不同域的 Web 应用程序对当前域中资源的访问。想要深入了解 CORS，请查阅MDN Web 文档。
+跨域问题与 Nginx 配置 当前端直接请求服务端接口时，经常会遇到跨域问题，你可能会在浏览器的控制台看到如下错误：
 Access to XMLHttpRequest at &lsquo;https://test.xxx.com&rsquo; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: No &lsquo;Access-Control-Allow-Origin&rsquo; header is present on the requested resource.
-在使用Nginx做反向代理的情况，一般会进行如下配置
-location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 大多数情况可以解决问题，还有一些特殊情况，以下进行列举
-情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
-Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: The &lsquo;Access-Control-Allow-Origin&rsquo; header contains multiple values &lsquo;http://localhost:8080, *&rsquo;, but only one is allowed.">
+在使用 Nginx 作为反向代理时，我们一般可以通过以下配置解决大多数跨域问题：
+location / { ... add_header Access-Control-Allow-Origin &#34;https://localhost:8080&#34;; add_header Access-Control-Allow-Credentials true; add_header Access-Control-Expose-Headers FooBar; ... } 然而，有一些特殊情况需要额外注意，我们将逐一列举并给出相应的优化配置。
+其他情况 情况一，Nginx反向代理服务端，服务端也进行了跨域设置 此时可能会出现以下错误:
+Access to XMLHttpRequest at &lsquo;https://test.">
 <meta property="article:published_time" content="2023-07-18T21:01:00&#43;08:00">
 <meta property="article:updated_time" content="2023-07-18T21:01:00&#43;08:00">
 
@@ -162,11 +162,13 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
         </aside>
         
         
-        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5"><p>记录跨域问题以及<code>Nginx</code>的对应配置</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS">什么是跨源资源共享（CORS）？</a></p>
-<p>前端需要直接请求服务端接口出现跨域问题:</p>
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5"><p>记录跨域问题的原因，并展示如何使用 Nginx 的配置来解决这些问题</p>
+<p>什么是跨源资源共享（CORS）？
+跨源资源共享（CORS）是一种浏览器安全策略，用于限制来自不同域的 Web 应用程序对当前域中资源的访问。想要深入了解 CORS，请查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS">MDN Web 文档</a>。</p>
+<h2 id="跨域问题与-nginx-配置">跨域问题与 Nginx 配置</h2>
+<p>当前端直接请求服务端接口时，经常会遇到跨域问题，你可能会在浏览器的控制台看到如下错误：</p>
 <p>Access to XMLHttpRequest at &lsquo;<a href="https://test.xxx.com">https://test.xxx.com</a>&rsquo; from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: No &lsquo;Access-Control-Allow-Origin&rsquo; header is present on the requested resource.</p>
-<p>在使用<code>Nginx</code>做反向代理的情况，一般会进行如下配置</p>
+<p>在使用 Nginx 作为反向代理时，我们一般可以通过以下配置解决大多数跨域问题：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">add_header</span> <span style="color:#e6db74">Access-Control-Allow-Origin</span> <span style="color:#e6db74">&#34;https://localhost:8080&#34;</span>;
@@ -174,8 +176,9 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">add_header</span> <span style="color:#e6db74">Access-Control-Expose-Headers</span> <span style="color:#e6db74">FooBar</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
-</span></span></code></pre></div><p>大多数情况可以解决问题，还有一些特殊情况，以下进行列举</p>
-<h4 id="情况一nginx反向代理服务端服务端也进行了跨域设置">情况一，Nginx反向代理服务端，服务端也进行了跨域设置</h4>
+</span></span></code></pre></div><p>然而，有一些特殊情况需要额外注意，我们将逐一列举并给出相应的优化配置。</p>
+<h2 id="其他情况">其他情况</h2>
+<h3 id="情况一nginx反向代理服务端服务端也进行了跨域设置">情况一，Nginx反向代理服务端，服务端也进行了跨域设置</h3>
 <p>此时可能会出现以下错误:</p>
 <p>Access to XMLHttpRequest at &lsquo;<a href="https://test.xxx.com/api/xxx'">https://test.xxx.com/api/xxx'</a> from origin &lsquo;http://localhost:8080&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: The &lsquo;Access-Control-Allow-Origin&rsquo; header contains multiple values &lsquo;http://localhost:8080, *&rsquo;, but only one is allowed.</p>
 <p>可以考虑移除服务端的跨域设置</p>
@@ -186,11 +189,10 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">proxy_set_header</span> <span style="color:#e6db74">Access-Control-Allow-Origin</span> <span style="color:#e6db74">*</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
-</span></span></code></pre></div><h4 id="情况二服务端或框架对于预检请求没有特殊处理">情况二，服务端（或框架）对于预检请求没有特殊处理</h4>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82">什么是预检请求？</a></p>
-<p>客户端对服务端发起<code>OPTIONS</code>请求时出现 404 或 其他正常响应但是没有任何CORS相关的头信息字段。</p>
-<p>这时，浏览器就会认定，服务器不同意预检请求，控制台报错还有跨域问题</p>
-<p>Nginx可以进行如下配置</p>
+</span></span></code></pre></div><h3 id="情况二服务端或框架对于预检请求没有特殊处理">情况二，服务端（或框架）对于预检请求没有特殊处理</h3>
+<p>预检请求（Preflight Request）是 CORS 中的一种特殊请求，关于预检请求的详细信息请参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82">这里</a>。</p>
+<p>在这种情况下，客户端对服务端发起 OPTIONS 请求时可能出现 404 错误，或者收到其他正常响应但没有任何 CORS 相关的头信息字段。这时，浏览器会认定服务器不同意预检请求，从而导致跨域问题。</p>
+<p>解决方案是在 Nginx 中添加如下配置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">if</span> <span style="color:#e6db74">(</span>$request_method = <span style="color:#e6db74">&#39;OPTIONS&#39;)</span> {
@@ -198,15 +200,15 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
-</span></span></code></pre></div><h4 id="情况三需要使用cookie但配置了access-control-allow-origin-">情况三，需要使用Cookie，但配置了Access-Control-Allow-Origin: *</h4>
+</span></span></code></pre></div><h3 id="情况三需要使用cookie但配置了access-control-allow-origin-">情况三，需要使用Cookie，但配置了Access-Control-Allow-Origin: *</h3>
 <p>一般这种情况需要使用 cookie，所以配置了<code>Access-Control-Allow-Credentials: true</code>，或客户端使用了<code>withCredentials = true</code></p>
 <p><em>Access-Control-Allow-Credentials：该字段是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为<code>true</code>，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为<code>true</code>，如果服务器不要浏览器发送Cookie，删除该字段即可。</em></p>
 <p>会出现如下报错:</p>
 <p>Access to XMLHttpRequest at &lsquo;<a href="https://test.xxx.com/api/xxx'">https://test.xxx.com/api/xxx'</a> from origin &lsquo;http://localhost:8080&rsquo; has   been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: The value of the &lsquo;Access-Control-Allow-Origin&rsquo; header in the response must not be the wildcard &lsquo;*&rsquo; when the request&rsquo;s credentials mode is &lsquo;include&rsquo;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.</p>
-<p>提示了此时不能使用 <code>*</code>, 必须指定 Origin</p>
+<p>为了解决这个问题，我们不能使用 *，而必须指定具体的 Origin。</p>
 <ul>
 <li>
-<p>有确定的域名直接写入配置</p>
+<p>如果你有确定的域名，可以直接将其写入配置中：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">add_header</span> <span style="color:#e6db74">Access-Control-Allow-Origin</span> <span style="color:#e6db74">http://xxx.com</span>;
@@ -214,7 +216,7 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>根据相关规则动态设置</p>
+<p>如果你需要根据相关规则动态设置 Origin：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">if</span> <span style="color:#e6db74">(</span>$http_origin ~<span style="color:#e6db74">*</span> <span style="color:#e6db74">&#34;xxx.com&#34;)</span> {
@@ -224,7 +226,7 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
 </span></span></code></pre></div></li>
 </ul>
-<h4 id="情况四配置顺序不对">情况四，配置顺序不对</h4>
+<h3 id="情况四配置顺序不对">情况四，配置顺序不对</h3>
 <p>在代理的资源后面加跨域参数<strong>无效</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://test.xxx.com/api</span>  <span style="color:#75715e"># ❌写在这里不会生效
@@ -234,7 +236,7 @@ Access to XMLHttpRequest at &lsquo;https://test.xxx.com/api/xxx&#39; from origin
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">proxy_pass</span> <span style="color:#e6db74">http://test.xxx.com/api</span>  <span style="color:#75715e"># ✅要写在参数配置下方
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">}</span>
-</span></span></code></pre></div><p><strong>参考链接</strong></p>
+</span></span></code></pre></div><h2 id="参考链接">参考链接</h2>
 <p><a href="https://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解 https://www.ruanyifeng.com/blog/2016/04/cors.html</a></p>
 <p><a href="https://www.cnblogs.com/konglxblog/p/16114550.html">Nginx 轻松搞定跨域问题！https://www.cnblogs.com/konglxblog/p/16114550.html</a></p>
 </div>
