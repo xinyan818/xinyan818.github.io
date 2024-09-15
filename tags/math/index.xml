@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Math on 胡思乱</title>
+    <link>https://xinyan818.github.io/tags/math/</link>
+    <description>Recent content in Math on 胡思乱</description>
+    <generator>Hugo -- 0.134.2</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 23 Oct 2022 20:37:59 +0800</lastBuildDate>
+    <atom:link href="https://xinyan818.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>圆周运动动画</title>
+      <link>https://xinyan818.github.io/post/circle_animation/</link>
+      <pubDate>Sun, 23 Oct 2022 20:37:59 +0800</pubDate>
+      <guid>https://xinyan818.github.io/post/circle_animation/</guid>
+      <description>&lt;h3 id=&#34;数学定义&#34;&gt;数学定义&lt;/h3&gt;
+&lt;p&gt;众所周知，&lt;strong&gt;三点确定一个圆&lt;/strong&gt;，通过在圆上的任意三点可以解出圆的方程，当我们解出方程，一般会得到数学中常见的一般式方程：&lt;/p&gt;
+&lt;p&gt;$$x^2+y^2+Dx+Ey+F=r^2$$&lt;/p&gt;
+&lt;p&gt;本质上我们也得到了圆心和半径（可能并不那么容易）&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
